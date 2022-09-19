@@ -1,67 +1,3 @@
-### Input HTML inside <div></div> tags
-
-- User can enter html code
-- (not recommended) encourages Cross-Site Scripting attacks (XSS).
-
-```
-  <div class="description">
-    <p>{@html description}</p>
-  </div>
-```
-
-### Styling a class conditionally (ternary operator)
-
-- 2 Methods:
-
-```
-    <div class="{userImage ? 'thumb' : 'thumb thumb-placeholder'}">
-      <img src="{userImage}" alt={userName}/>
-    </div>
-```
-
-``` 
-    <div class="thumb" class:thumb-placeholder="{!userImage}">
-      <img src="{userImage}" alt={userName}/>
-    </div>
-```
-
-### Disable Cors
-
-- Mac
-```
-open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
-```
-- Windows
-```
-C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
-```
-
-### Check Chrome Version
-
-`chrome://version`
-
-## Svelte dev server stuck on an old version
-
-- Open Dev Tools -> Network Tab --> Disable cache 
-
-## What is Svelte
-
-- Svelte is a Compiler, not a Framework (React, Vue, Angular).
-- Translates instructions into efficient runtime code at build time.
-
-### How does Svelte work?
-
-<img src="./pics/how-does-svelte-work.png" alt="how does svelte work" />
-
-## Two Directional Flow
-
-- `value` data flow into the input
-- `on:input` data flow out of the input
-
-```
-<input type="text" value="{name}" on:input="{nameInput}" >
-```
-
 ### If statements
 
 ```svelte
@@ -188,27 +124,6 @@ userImage={contact.imageURL} />
 ```
 
 - adding an index in the `each` statement increases the performance.
-
-### Event Identifier
-
-- only allow the button to be used once
-- `<button on:click|once={addContact} >Add Contact Card</button>`
-
-- `<button on:click|stopPropagation={addContact} >Add Contact Card</button>`
-
-- `<button on:click|preventDefault={addContact} >Add Contact Card</button>`
-    - used in "forms"
-    - prevent browser default refresh
-
-### Inline functions
-
-```svelte
-<button on:click="{(event) => {createdContacts = createdContacts.slice()}}">Delete First</button>
-```
-
-
-
-
 
 
 

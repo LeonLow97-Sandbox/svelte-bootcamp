@@ -13,7 +13,8 @@
 
 	// let uppercaseName; not required!
 	// "$:" works only in JavaScript
-	// dynamic value
+	// dynamic value (label)
+	// when name changes, the uppercase will be triggered
 	$: uppercaseName = name.toUpperCase();
 
 	$: console.log(name)

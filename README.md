@@ -3,7 +3,7 @@
 - User can enter html code
 - (not recommended) encourages Cross-Site Scripting attacks (XSS).
 
-```
+```svelte
   <div class="description">
     <p>{@html description}</p>
   </div>
@@ -13,13 +13,13 @@
 
 - 2 Methods:
 
-```
+```svelte
     <div class="{userImage ? 'thumb' : 'thumb thumb-placeholder'}">
       <img src="{userImage}" alt={userName}/>
     </div>
 ```
 
-``` 
+```svelte
     <div class="thumb" class:thumb-placeholder="{!userImage}">
       <img src="{userImage}" alt={userName}/>
     </div>
@@ -80,6 +80,8 @@ C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-secur
 <ContactCard userName={name} jobTitle={title} {description} userImage={image} />
 {:else if formState === "invalid"}
 <p>Invalid Input</p>
+{:else}
+<p>Some other issue</p>
 {/if}
 ```
 
@@ -138,6 +140,7 @@ userImage={contact.imageURL} />
 
 ### Adding an id to `each`
 
+- id must be unique.
 ```svelte
 <script>
         createdContacts = [...createdContacts, 
@@ -194,10 +197,14 @@ userImage={contact.imageURL} />
 - only allow the button to be used once
 - `<button on:click|once={addContact} >Add Contact Card</button>`
 
+- improves scrolling performance
+- `<button on:click|passive={addContact} >Add Contact Card</button>`
+
+- stops event propagation
 - `<button on:click|stopPropagation={addContact} >Add Contact Card</button>`
 
 - `<button on:click|preventDefault={addContact} >Add Contact Card</button>`
-    - used in "forms"
+    - used in <forms></forms>
     - prevent browser default refresh
 
 ### Inline functions

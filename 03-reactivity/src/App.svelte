@@ -1,4 +1,4 @@
-<script>
+      <script>
   import ContactCard from "./ContactCard.svelte";
 
   let name = "";

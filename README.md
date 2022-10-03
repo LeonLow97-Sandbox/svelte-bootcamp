@@ -19,7 +19,7 @@
     </div>
 ```
 
-``` 
+```
     <div class="thumb" class:thumb-placeholder="{!userImage}">
       <img src="{userImage}" alt={userName}/>
     </div>
@@ -28,10 +28,13 @@
 ### Disable Cors
 
 - Mac
+
 ```
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 ```
+
 - Windows
+
 ```
 C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 ```
@@ -42,7 +45,7 @@ C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-secur
 
 ## Svelte dev server stuck on an old version
 
-- Open Dev Tools -> Network Tab --> Disable cache 
+- Open Dev Tools -> Network Tab --> Disable cache
 
 ## What is Svelte
 
@@ -89,11 +92,11 @@ C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-secur
 - The code below adds the latest javascript object into the last element of the new array `createdContacts`
 
 ```svelte
-    createdContacts = [...createdContacts, 
+    createdContacts = [...createdContacts,
     {
-      name: name, 
-      jobTitle: title, 
-      imageURL: image, 
+      name: name,
+      jobTitle: title,
+      imageURL: image,
       desc: description
     }
   ];
@@ -101,10 +104,10 @@ C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-secur
 
 ```svelte
 {#each createdContacts as contact}
-<ContactCard 
-userName={contact.name} 
-jobTitle={contact.jobTitle} 
-description={contact.description} 
+<ContactCard
+userName={contact.name}
+jobTitle={contact.jobTitle}
+description={contact.description}
 userImage={contact.imageURL} />
 {/each}
 ```
@@ -114,17 +117,17 @@ userImage={contact.imageURL} />
 ```svelte
 {#each createdContacts as contact, index}
 <h2># {index + 1}</h2>
-<ContactCard 
-userName={contact.name} 
-jobTitle={contact.jobTitle} 
-description={contact.desc} 
+<ContactCard
+userName={contact.name}
+jobTitle={contact.jobTitle}
+description={contact.desc}
 userImage={contact.imageURL} />
 {:else}
   <p>Please start adding some contacts, we found none!</p>
 {/each}
 ```
 
-### Deleting cards 
+### Deleting cards
 
 ```svelte
   function deleteFirst() {
@@ -140,22 +143,22 @@ userImage={contact.imageURL} />
 
 ```svelte
 <script>
-        createdContacts = [...createdContacts, 
+        createdContacts = [...createdContacts,
     {
       id: Math.random(),
-      name: name, 
-      jobTitle: title, 
-      imageURL: image, 
+      name: name,
+      jobTitle: title,
+      imageURL: image,
       desc: description
     }
 </script>
 
 {#each createdContacts as contact, index (contact.id)}
 <h2># {index + 1}</h2>
-<ContactCard 
-userName={contact.name} 
-jobTitle={contact.jobTitle} 
-description={contact.desc} 
+<ContactCard
+userName={contact.name}
+jobTitle={contact.jobTitle}
+description={contact.desc}
 userImage={contact.imageURL} />
 {:else}
   <p>Please start adding some contacts, we found none!</p>
@@ -197,8 +200,8 @@ userImage={contact.imageURL} />
 - `<button on:click|stopPropagation={addContact} >Add Contact Card</button>`
 
 - `<button on:click|preventDefault={addContact} >Add Contact Card</button>`
-    - used in "forms"
-    - prevent browser default refresh
+  - used in "forms"
+  - prevent browser default refresh
 
 ### Inline functions
 
@@ -206,9 +209,15 @@ userImage={contact.imageURL} />
 <button on:click="{(event) => {createdContacts = createdContacts.slice()}}">Delete First</button>
 ```
 
+## Component Types
 
+- Stateful components, containers
 
+  - Hold & manage data, pass data around
+  - <App>, <Products>, <Checkout>
+  - Only a few
 
-
-
-
+- Presentational Components
+  - Receive & Output data
+  - <Modal>, <Card>, <Button>
+  - Many

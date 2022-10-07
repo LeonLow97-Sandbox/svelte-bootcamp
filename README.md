@@ -1,3 +1,12 @@
+### Svelte Formatter
+
+- In `settings.json`,
+```js
+"[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+},
+```
+
 ### Input HTML inside <div></div> tags
 
 - User can enter html code
